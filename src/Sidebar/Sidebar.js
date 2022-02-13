@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
-import Head from './Head/Head'
 
-class App extends Component {
+class Sidebar extends Component {
     render() {
         return (
             <div>
-                <Head>
-                </Head>
+                
             </div>
         );
     }
 }
 
-export default App;
+export default Sidebar;
