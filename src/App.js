@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import Head from './Head/Head'
+import Content from "./Content/content";
+import Sidebar from "./Sidebar/Sidebar";
 
 class App extends Component {
     render() {
         return (
             <div>
-                <Head>
-                </Head>
+                <Head/>
+                <Sidebar/>
+                <Content/>
             </div>
         );
     }

@@ -3,12 +3,11 @@ import React, {Component} from 'react';
 class Head extends Component {
     render() {
         return (
-            <div>
-                <div className="mdui-appbar">
+                <header className="mdui-appbar mdui-appbar-fixed .mdui-appbar-with-toolbar">
                     <div className="mdui-toolbar mdui-color-theme">
-                        <a href="/" className="mdui-btn mdui-btn-icon">
+                        <button mdui-drawer="{target: '#left-drawer'}" className="mdui-btn mdui-btn-icon mdui-ripple">
                             <i className="mdui-icon material-icons">menu</i>
-                        </a>
+                        </button>
                         <span className="mdui-typo-title">Title</span>
                         <div className="mdui-toolbar-spacer"></div>
                         <a href="/" className="mdui-btn mdui-btn-icon">
@@ -21,8 +20,7 @@ class Head extends Component {
                             <i className="mdui-icon material-icons">more_vert</i>
                         </a>
                     </div>
-                </div>
-            </div>
+                </header>
         );
     }
 }
