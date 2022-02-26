@@ -14,6 +14,7 @@ class GoogleSearch extends Component {
         if(e.keyCode === 13) {
             var q = this.state.value;
             console.log(q);
+            q = q.replace(" ","+");
             window.location.href="https://www.google.com.hk/search?q="+q;
         }
     }
