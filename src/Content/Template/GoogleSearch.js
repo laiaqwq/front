@@ -15,11 +15,14 @@ class SearchTipItem extends Component {
 
 class SearchTips extends Component {
     render() {
+        if (this.props.TipArray == {}){
+            return
+        }
         return (
             <div className="search-tip-list">
-                {
-                
-                }
+                {this.props.TipArray.map(item => (
+                    <SearchTipItem key={item} q={item}/>
+                ))}
             </div>
         );
     }
@@ -29,44 +32,49 @@ class SearchTips extends Component {
 
 class GoogleSearch extends Component {
     
-    
-    
-    
     constructor(props) {
         super(props);
         window.setGoogleSearchTip = (data)=> {
-            this.setState({tip:data})
+            this.setState({tip:data});
+            this.forceUpdate();
         }
         this.state = {
             value:"",
             getTipUrl: "",
-            tip:{}
-        };
+            tip:[]}
+        ;
     }
     
     onKeyup = (e) =>{
         console.log("get")
         let q = this.state.value;
-        this.setState({getTipUrl:"https://suggestqueries.google.com/complete/search?client=youtube&q="+q+"&jsonp=getTip"});
+        let getTipUrl = "https://suggestqueries.google.com/complete/search?client=youtube&q="+q+"&jsonp=getTip";
+        //this.setState({getTipUrl:"https://suggestqueries.google.com/complete/search?client=youtube&q="+q+"&jsonp=getTip"});
         if(e.keyCode === 13) {
              window.location.href= "https://www.google.com/search?q="+q.replace(" ","+");
         }
         //JSONP
-        if (this.state.getTipUrl !== ""){
+        if (q !== ""){
             let script = document.querySelector('#script');
             if (script) {
                 script.remove();
             }
             script = document.createElement('script');
             script.id = 'script';
-            script.src = this.state.getTipUrl;
+            script.src = getTipUrl;
             document.querySelector('body').appendChild(script);
         }
     }
     
+    componentWillUnmount() {
+        let script = document.querySelector('#script');
+        if (script) {
+            script.remove();
+        }
+    }
+    
     render() {
-        
-        
+        console.log("render")
         return (
             <div className="content">
                 <div className="Search-block mdui-col-xs-12 mdui-col-sm-10 mdui-col-md-8">
@@ -83,11 +91,7 @@ class GoogleSearch extends Component {
                             }}
                         />
                     </div>
-                    
-                    
-                    <SearchTips>
-                        <SearchTipItem/>
-                    </SearchTips>
+                    <SearchTips TipArray={this.state.tip}/>
                 </div>
             </div>
         );
