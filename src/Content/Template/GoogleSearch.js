@@ -15,7 +15,7 @@ class SearchTipItem extends Component {
 
 class SearchTips extends Component {
     render() {
-        if (this.props.TipArray == {}){
+        if (this.props.TipArray === {}){
             return
         }
         return (
