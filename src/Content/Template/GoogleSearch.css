@@ -2,6 +2,14 @@
     padding-top: 64px;
 }
 
+.search-tip-list{
+    margin: -2px 10px 0;
+}
+
+.search-tip-item{
+    height: 24px;
+}
+
 .content{
     margin-top: 25vh;
     justify-content: center;
@@ -12,7 +20,7 @@
 .search-bar {
     border-radius:24px;
     display: flex;
-    margin: 7px 8px 8px;
+    margin: 7px 8px 0;
     height: 49px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, .24);
     background: #FAFAFA;

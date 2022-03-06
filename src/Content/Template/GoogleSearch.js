@@ -4,7 +4,7 @@ import './GoogleSearch.css'
 class SearchTipItem extends Component {
     render() {
         return (
-            <li className="mdui-list-item mdui-ripple">
+            <li className="mdui-list-item mdui-ripple search-tip-item ">
                 <a href={
                     "https://www.google.com.hk/search?q="+this.props.q.replace(" ","+")
                 }>{this.props.q}</a>
@@ -15,15 +15,16 @@ class SearchTipItem extends Component {
 
 class SearchTips extends Component {
     render() {
-        if (this.props.TipArray === {}){
-            return
+        
+        if (this.props.TipArray === {} || this.props.inputValue === ""){
+            return <div/>
         }
         return (
-            <div className="search-tip-list">
+            <ul className="search-tip-list mdui-list mdui-list-dense mdui-shadow-2">
                 {this.props.TipArray.map(item => (
                     <SearchTipItem key={item} q={item}/>
                 ))}
-            </div>
+            </ul>
         );
     }
 }
@@ -40,7 +41,6 @@ class GoogleSearch extends Component {
         }
         this.state = {
             value:"",
-            getTipUrl: "",
             tip:[]}
         ;
     }
@@ -91,7 +91,7 @@ class GoogleSearch extends Component {
                             }}
                         />
                     </div>
-                    <SearchTips TipArray={this.state.tip}/>
+                    <SearchTips TipArray={this.state.tip} inputValue={this.state.value}/>
                 </div>
             </div>
         );
