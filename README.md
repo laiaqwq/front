@@ -1,10 +1,10 @@
 # front
 a flexible front front page
+一个自用的首页
 
-##
+## 
 
-react mudi 
-test
+基于 react mudi 
 
-##dome
+## dome
 <a>https://laiaqwq.github.io/front/</a>
